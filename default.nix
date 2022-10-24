@@ -5,7 +5,7 @@ let
   compilerName = "ghc942";
   hsPkgs = pkgs.haskell.packages.${compilerName};
   pkg = { mkDerivation, base, lib }:
-    mkDerivation {
+    (mkDerivation {
       pname = "haskell-incremental-example";
       version = "1.0.0";
       src = ./.;
@@ -13,10 +13,13 @@ let
       isExecutable = true;
       executableHaskellDepends = [ base ];
       license = lib.licenses.bsd3;
-    };
+    })
+    .overrideAttrs (old: {
+      outputs = old.outputs ++ ["incremental"];
+    });
 
 in
-  { build = (pkgs.haskell.lib.overrideCabal (hsPkgs.callPackage pkg { })
+  { build = pkgs.haskell.lib.overrideCabal (hsPkgs.callPackage pkg { })
       (drv: {
         postInstall = ''
           # After the install phase, copy incremental build products to the
@@ -37,11 +40,5 @@ in
           # "incremental" from the "outputs" array.
           outputs=(''\${outputs[@]/incremental})
         '';
-      }))
-      # TODO: try to move this higher up
-      .overrideAttrs (old: {
-        outputs = old.outputs ++ ["incremental"];
       });
   }
-
-
