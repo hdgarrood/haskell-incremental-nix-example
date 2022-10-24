@@ -35,8 +35,7 @@ in
         preFixup = ''
           # Don't try to strip incremental build outputs. This command removes
           # "incremental" from the "outputs" array.
-          # TODO: less fucked up escaping
-          outputs=(${"\\" + "\${"}outputs[@]/incremental})
+          outputs=(''\${outputs[@]/incremental})
         '';
       }))
       # TODO: try to move this higher up
