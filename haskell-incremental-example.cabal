@@ -1,0 +1,12 @@
+name: haskell-incremental-example
+version: 1.0.0
+license: BSD3
+license-file: LICENSE
+cabal-version: >= 1.18
+build-type: Simple
+
+executable haskell-incremental-example
+    build-depends: base < 5
+    main-is: Main.hs
+    other-modules: M1, M2
+    default-language: Haskell2010
