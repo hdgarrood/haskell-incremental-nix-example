@@ -1,5 +1,7 @@
 ## haskell-nix-incremental-example
 
+Created by Jade Lovelace (@lf-) and I at NixCon 2022, based on a suggestion by Jonas Chevalier (@zimbatm).
+
 This repository contains a proof-of-concept of one approach that can be used with GHC 9.4 to enable incremental Nix builds for Haskell projects.
 Please note that this project configuration only works with GHC 9.4 and later, because previous versions of GHC use source file timestamps to determine whether source files have changed, and timestamps are not reliable enough for incremental builds in many settings (such as CI).
 
@@ -44,3 +46,11 @@ Building executable 'haskell-incremental-example' for haskell-incremental-exampl
 
 `M2` is recompiled because its source has changed, but neither of the other two modules are recompiled, even though they both depend on `M2`!
 This is because the _interface_ of `M2` has not changed, and GHC is able to spot this and determine that no rebuild of the other modules is necessary.
+
+### License (CC0)
+
+<a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">
+  <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0"/>
+</a>
+
+To the extent possible under law, Harry Garrood and Jade Lovelace have waived all copyright and related or neighbouring rights to haskell-nix-incremental-example. This work is published from: United Kingdom.
