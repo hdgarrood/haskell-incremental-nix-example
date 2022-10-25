@@ -1,6 +1,6 @@
 ## haskell-nix-incremental-example
 
-Created by Jade Lovelace (@lf-) and I at NixCon 2022, based on a suggestion by Jonas Chevalier (@zimbatm).
+Created by Jade Lovelace ([@lf-][]) and I at NixCon 2022, based on a suggestion by Jonas Chevalier ([@zimbatm][]).
 
 This repository contains a proof-of-concept of one approach that can be used with GHC 9.4 to enable incremental Nix builds for Haskell projects.
 Please note that this project configuration only works with GHC 9.4 and later, because previous versions of GHC use source file timestamps to determine whether source files have changed, and timestamps are not reliable enough for incremental builds in many settings (such as CI).
@@ -54,3 +54,6 @@ This is because the _interface_ of `M2` has not changed, and GHC is able to spot
 </a>
 
 To the extent possible under law, Harry Garrood and Jade Lovelace have waived all copyright and related or neighbouring rights to haskell-nix-incremental-example. This work is published from: United Kingdom.
+
+[@lf-]: https://github.com/lf-
+[@zimbatm]: https://github.com/zimbatm
